@@ -43,7 +43,7 @@ namespace :discovery do
       exit 1
     end
 
-    script=`bundle show foreman_discovery`.strip + '/extra/build_iso.sh'
+    script=Gem::Specification.find_by_name("foreman_discovery").gem_dir.strip + '/extra/build_iso.sh'
     builddir=''
     begin
       status = Open4::popen4("#{prefix} #{script} #{mode}") do |pid, stdin, stdout, stderr|
